@@ -1,6 +1,7 @@
 package tacos.web;
 import javax.validation.Valid;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.support.SessionStatus;
 import lombok.extern.slf4j.Slf4j;
 import tacos.TacoOrder;
 
+import java.util.logging.Logger;
+
 @Slf4j
 @Controller
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
-
+  private static final Logger log = (Logger) LoggerFactory.getLogger(OrderController.class);
   @GetMapping("/current")
   public String orderForm() {
     return "orderForm";
@@ -41,7 +44,7 @@ public class OrderController {
       return "orderForm";
     }
 
-    log.info("Order submitted: {}", order);
+    log.info("Order submitted: " +  order);
     sessionStatus.setComplete();
 
     return "redirect:/";

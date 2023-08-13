@@ -3,6 +3,8 @@ package tacos.web;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import jdk.internal.instrumentation.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +30,7 @@ public class DesignTacoController {
 
 @ModelAttribute
 public void addIngredientsToModel(Model model) {
+
 	List<Ingredient> ingredients = Arrays.asList(
 	  new Ingredient("FLTO", "Flour Tortilla", Type.WRAP),
 	  new Ingredient("COTO", "Corn Tortilla", Type.WRAP),
@@ -84,7 +87,7 @@ public void addIngredientsToModel(Model model) {
     }
 
     tacoOrder.addTaco(taco);
-    log.info("Processing taco: {}", taco);
+      System.out.println("Processing taco: " + taco);
 
     return "redirect:/orders/current";
   }
