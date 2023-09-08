@@ -66,7 +66,7 @@ public void addIngredientsToModel(Model model) {
     return "design";
   }
 
-/*
+
   @PostMapping
   public String processTaco(Taco taco,
   			@ModelAttribute TacoOrder tacoOrder) {
@@ -75,22 +75,22 @@ public void addIngredientsToModel(Model model) {
 
     return "redirect:/orders/current";
   }
- */
 
-  @PostMapping
-  public String processTaco(
-		  @Valid Taco taco, Errors errors,
-		  @ModelAttribute TacoOrder tacoOrder) {
 
-    if (errors.hasErrors()) {
-      return "design";
-    }
-
-    tacoOrder.addTaco(taco);
-      System.out.println("Processing taco: " + taco);
-
-    return "redirect:/orders/current";
-  }
+//  @PostMapping
+//  public String processTaco(
+//		  @Valid Taco taco, Errors errors,
+//		  @ModelAttribute TacoOrder tacoOrder) {
+//
+//    if (errors.hasErrors()) {
+//      return "design";
+//    }
+//
+//    tacoOrder.addTaco(taco);
+//      System.out.println("Processing taco: " + taco);
+//
+//    return "redirect:/orders/current";
+//  }
 
   private Iterable<Ingredient> filterByType(
       List<Ingredient> ingredients, Type type) {
